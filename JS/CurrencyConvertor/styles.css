@@ -1,69 +1,17 @@
-body {
-    background-color: #FFF7BF;
-    margin: 0;
-    height: 100vh;
-    font-family: "Lato", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body{
+  font-family: "Lato";
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.container {
-    background-color: #F8D800;
-    border-radius: 10px;
-    padding: 40px;
-    width: 400px;
-    text-align: center;
-}
-
-h1 {
-    margin-bottom: 10px;
-}
-
-#amount {
-    margin: 20px 0;
-}
-
-#amount input {
-    padding: 10px;
-    width: 80%;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-select {
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 150px;
-}
-
-#con button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-#con button:hover {
-    background-color: #1e40af;
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
-}
-
-#val {
-    font-weight: bold;
+.input{
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #fff;
+  width: 340px;
 }

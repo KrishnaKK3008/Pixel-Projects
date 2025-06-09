@@ -2,40 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Currency Converter</h1>
-
-        <div id="amount">
-            <label for="inputAmount">Enter amount</label>
-            <input type="number" id="inputAmount" placeholder="100" required>
+    <div class="w-5/12 max-w-[1200px] mx-auto bg-[#F8D800] shadow-lg mt-10 flex flex-col items-center justify-center p-5 rounded-md gap-5">
+        <h1 class="serif text-[#333] text-3xl font-bold">Currency Converter</h1>
+        <p class="text-[#333]">Enter amount</p>
+        <input class="input" type="number" id="amount" placeholder="100" required>
+        <div class="flex gap-2 justify-center items-center">
+            <select class="w-[150px] border p-2 bg-white rounded-md" name="from" id="from"></select>
+            <p>TO</p>
+            <select class="w-[150px] border p-2 bg-white rounded-md" name="to" id="to"></select>
         </div>
-
-        <div id="list">
-            <select id="from">
-                <option value="USD">🇺🇸 USD United States Dollar</option>
-                <!-- Add more if needed -->
-            </select>
-            <span>TO</span>
-            <select id="to">
-                <option value="INR">🇮🇳 IND Indian Rupee</option>
-                <!-- Add more if needed -->
-            </select>
-        </div>
-
-        <div id="con">
-            <button id="convert">Convert</button>
-        </div>
-
-        <p><span id="result">100 USD = 8,350.24 INR</span></p>
+        <button class="bg-[#007bff] text-white shadow-md p-2 rounded-md w-[340px]" id="convert">Convert</button>
+        <p id="result"></p>
     </div>
-
-    <script src="script.js"></script>
 </body>
+<script src="script.js"></script>
 </html>
