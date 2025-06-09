@@ -1,17 +1,86 @@
-body{
-  font-family: "Lato";
-  background-color: #f4f4f4;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #fff3b0; /* light yellow background */
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.input{
-  padding: 4px;
+.container {
+  background-color: #f8d800; /* bright yellow */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+h1 {
+  color: #111;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.label {
+  margin: 10px 0 5px;
+  color: #111;
+  font-size: 1rem;
+}
+
+.input {
+  padding: 10px;
   border-radius: 5px;
-  border: 1px solid #333;
-  background-color: #fff;
-  width: 340px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.selectors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.select {
+  width: 180px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.to-text {
+  font-weight: bold;
+  color: #111;
+}
+
+.button {
+  background-color: #2563eb; /* blue */
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.button:hover {
+  background-color: #1e40af;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #111;
+  font-weight: 500;
 }
