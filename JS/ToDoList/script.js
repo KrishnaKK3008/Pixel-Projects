@@ -1,216 +1,100 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const taskInput = document.getElementById('taskInput');
-    const dateInput = document.getElementById('dateInput');
-    const timeInput = document.getElementById('timeInput');
-    const addTaskBtn = document.getElementById('addTaskBtn');
-    const dueTasksDiv = document.querySelector('.due-tasks');
-    const upcomingTasksDiv = document.querySelector('.upcoming-tasks');
-    const todayTasksDiv = document.querySelector('.today-tasks');
-    const searchTaskInput = document.getElementById('searchTask');
-    const errorMessageDiv = document.getElementById('errorMessage');
-    const errorMessageText = document.getElementById('errorMessageText');
-    const closeErrorBtn = document.getElementById('closeError');
-    const emptyDueDiv = document.getElementById('emptyDue');
-    const emptyUpcomingDiv = document.getElementById('emptyUpcoming');
-    const emptyTodayDiv = document.getElementById('emptyToday');
+let tasks = [];
 
-    let tasks = loadTasks();
+function addTask() {
+  const taskText = document.getElementById('task').value;
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
 
-    function loadTasks() {
-        const storedTasks = localStorage.getItem('tasks');
-        return storedTasks ? JSON.parse(storedTasks) : [];
-    }
+  if (!taskText || !date || !time) {
+    alert("Please fill all fields");
+    return;
+  }
 
-    function saveTasks() {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
+  const task = { taskText, date, time };
+  tasks.push(task);
+  displayTasks();
+  clearInputs();
+}
 
-    function displayMessage(message, isError = true) {
-        errorMessageText.textContent = message;
-        errorMessageDiv.style.display = 'flex';
-        errorMessageDiv.style.backgroundColor = isError ? '#ffecb3' : '#e0f7fa';
-        errorMessageDiv.style.borderColor = isError ? '#ffcc80' : '#b2ebf2';
-        errorMessageDiv.style.color = isError ? '#795548' : '#0097a7';
-    }
+function clearInputs() {
+  document.getElementById('task').value = '';
+  document.getElementById('date').value = '';
+  document.getElementById('time').value = '';
+}
 
-    function clearMessage() {
-        errorMessageDiv.style.display = 'none';
-        errorMessageText.textContent = '';
-    }
+function displayTasks() {
+  const taskList = document.getElementById('taskList');
+  taskList.innerHTML = '';
 
-    closeErrorBtn.addEventListener('click', clearMessage);
+  // Group tasks by date
+  const grouped = {};
+  tasks.forEach(task => {
+    if (!grouped[task.date]) grouped[task.date] = [];
+    grouped[task.date].push(task);
+  });
 
-    function renderTasks(taskList, container) {
-        container.innerHTML = '';
-        if (taskList.length === 0) {
-            const emptyMessageDiv = container === dueTasksDiv ? emptyDueDiv : (container === upcomingTasksDiv ? emptyUpcomingDiv : emptyTodayDiv);
-            if (emptyMessageDiv) {
-                emptyMessageDiv.style.display = 'block';
-            }
-            return;
-        } else {
-            const emptyMessageDiv = container === dueTasksDiv ? emptyDueDiv : (container === upcomingTasksDiv ? emptyUpcomingDiv : emptyTodayDiv);
-            if (emptyMessageDiv) {
-                emptyMessageDiv.style.display = 'none';
-            }
-        }
+  Object.keys(grouped)
+    .sort()
+    .forEach(date => {
+      const dateEl = document.createElement('div');
+      dateEl.innerHTML = `<div class="task-date">${formatDate(date)}</div>`;
+      grouped[date].forEach((task, idx) => {
+        const taskEl = document.createElement('div');
+        taskEl.className = 'task-item';
+        taskEl.innerHTML = `
+          <div>
+            <div class="task-desc">${task.taskText} at <strong>${formatTime(task.time)}</strong></div>
+          </div>
+          <div class="task-buttons">
+            <button class="edit" onclick="editTask('${date}', ${idx})">Edit</button>
+            <button class="delete" onclick="deleteTask('${date}', ${idx})">Delete</button>
+          </div>
+        `;
+        dateEl.appendChild(taskEl);
+      });
+      taskList.appendChild(dateEl);
+    });
+}
 
-        const groupedTasks = {};
-        taskList.forEach(task => {
-            if (!groupedTasks[task.date]) {
-                groupedTasks[task.date] = [];
-            }
-            groupedTasks[task.date].push(task);
-        });
+function formatDate(dateStr) {
+  const parts = dateStr.split('-');
+  return `${parts[2]}/${parts[1]}/${parts[0]}`;
+}
 
-        for (const date in groupedTasks) {
-            const daySection = document.createElement('div');
-            daySection.classList.add('task-day');
-            const dateHeading = document.createElement('h3');
-            dateHeading.textContent = formatDate(date);
-            daySection.appendChild(dateHeading);
+function formatTime(timeStr) {
+  const [hour, minute] = timeStr.split(':');
+  const h = parseInt(hour);
+  const ampm = h >= 12 ? 'pm' : 'am';
+  const formattedHour = h % 12 === 0 ? 12 : h % 12;
+  return `${formattedHour}:${minute} ${ampm}`;
+}
 
-            groupedTasks[date].forEach(task => {
-                const taskItem = document.createElement('div');
-                taskItem.classList.add('task-item');
-                taskItem.dataset.taskId = task.id;
+function deleteTask(date, index) {
+  tasks = tasks.filter((task, i) => !(task.date === date && groupedIndex(date, i) === index));
+  displayTasks();
+}
 
-                const taskDetails = document.createElement('div');
-                taskDetails.classList.add('task-details');
-                taskDetails.textContent = task.text;
-                const timeSpan = document.createElement('span');
-                timeSpan.classList.add('task-time');
-                timeSpan.textContent = formatTime(task.time);
-                taskDetails.appendChild(timeSpan);
-                taskItem.appendChild(taskDetails);
+function groupedIndex(date, index) {
+  const filtered = tasks.filter(task => task.date === date);
+  return filtered[index];
+}
 
-                const taskActions = document.createElement('div');
-                taskActions.classList.add('task-actions');
+function editTask(date, index) {
+  const filtered = tasks.filter(task => task.date === date);
+  const task = filtered[index];
+  document.getElementById('task').value = task.taskText;
+  document.getElementById('date').value = task.date;
+  document.getElementById('time').value = task.time;
 
-                const editButton = document.createElement('button');
-                editButton.textContent = 'Edit';
-                editButton.classList.add('edit-btn');
-                editButton.addEventListener('click', () => editTask(task.id));
-                taskActions.appendChild(editButton);
+  tasks = tasks.filter(t => !(t.date === date && t.taskText === task.taskText && t.time === task.time));
+  displayTasks();
+}
 
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Delete';
-                deleteButton.classList.add('delete-btn');
-                deleteButton.addEventListener('click', () => deleteTask(task.id));
-                taskActions.appendChild(deleteButton);
-
-                taskItem.appendChild(taskActions);
-                daySection.appendChild(taskItem);
-            });
-            container.appendChild(daySection);
-        }
-    }
-
-    function formatDate(dateString) {
-        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-        return new Date(dateString).toLocaleDateString(undefined, options);
-    }
-
-    function formatTime(timeString) {
-        const [hours, minutes] = timeString.split(':');
-        const period = parseInt(hours) < 12 ? 'am' : 'pm';
-        const formattedHours = parseInt(hours) % 12 === 0 ? 12 : parseInt(hours) % 12;
-        return `${formattedHours}:${minutes} ${period}`;
-    }
-
-    function addTask() {
-        const taskText = taskInput.value.trim();
-        const taskDate = dateInput.value;
-        const taskTime = timeInput.value;
-
-        if (!taskText || !taskDate || !taskTime) {
-            displayMessage('Please fill in all fields.');
-            return;
-        }
-        clearMessage();
-
-        const newTask = {
-            id: Date.now(),
-            text: taskText,
-            date: taskDate,
-            time: taskTime
-        };
-        tasks.push(newTask);
-        saveTasks();
-        taskInput.value = '';
-        dateInput.value = '';
-        timeInput.value = '';
-        filterAndDisplayTasks();
-    }
-
-    addTaskBtn.addEventListener('click', addTask);
-
-    function editTask(taskId) {
-        const taskToEdit = tasks.find(task => task.id === taskId);
-        if (taskToEdit) {
-            taskInput.value = taskToEdit.text;
-            dateInput.value = taskToEdit.date;
-            timeInput.value = taskToEdit.time;
-            addTaskBtn.textContent = 'Save Edit';
-            addTaskBtn.removeEventListener('click', addTask);
-            addTaskBtn.addEventListener('click', function saveEditedTask() {
-                const updatedText = taskInput.value.trim();
-                const updatedDate = dateInput.value;
-                const updatedTime = timeInput.value;
-
-                if (!updatedText || !updatedDate || !updatedTime) {
-                    displayMessage('Please fill in all fields.');
-                    return;
-                }
-                clearMessage();
-
-                taskToEdit.text = updatedText;
-                taskToEdit.date = updatedDate;
-                taskToEdit.time = updatedTime;
-                saveTasks();
-                taskInput.value = '';
-                dateInput.value = '';
-                timeInput.value = '';
-                addTaskBtn.textContent = 'Add Task';
-                addTaskBtn.removeEventListener('click', saveEditedTask);
-                addTaskBtn.addEventListener('click', addTask);
-                filterAndDisplayTasks();
-            });
-        }
-    }
-
-    function deleteTask(taskId) {
-        tasks = tasks.filter(task => task.id !== taskId);
-        saveTasks();
-        filterAndDisplayTasks();
-    }
-
-    function filterAndDisplayTasks() {
-        const searchTerm = searchTaskInput.value.toLowerCase();
-        const today = new Date().toISOString().split('T')[0];
-        const dueTasks = [];
-        const upcomingTasks = [];
-        const todayTasks = [];
-
-        tasks.forEach(task => {
-            const taskLower = task.text.toLowerCase();
-            if (taskLower.includes(searchTerm)) {
-                if (task.date < today) {
-                    dueTasks.push(task);
-                } else if (task.date === today) {
-                    todayTasks.push(task);
-                } else {
-                    upcomingTasks.push(task);
-                }
-            }
-        });
-
-        renderTasks(todayTasks.sort((a, b) => a.time.localeCompare(b.time)), todayTasksDiv);
-        renderTasks(dueTasks.sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time)), dueTasksDiv);
-        renderTasks(upcomingTasks.sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time)), upcomingTasksDiv);
-    }
-
-    searchTaskInput.addEventListener('input', filterAndDisplayTasks);
-
-    filterAndDisplayTasks(); // Initial display of tasks
+document.getElementById('searchInput').addEventListener('input', function () {
+  const query = this.value.toLowerCase();
+  const items = document.querySelectorAll('.task-item');
+  items.forEach(item => {
+    const text = item.querySelector('.task-desc').innerText.toLowerCase();
+    item.style.display = text.includes(query) ? 'flex' : 'none';
+  });
 });
