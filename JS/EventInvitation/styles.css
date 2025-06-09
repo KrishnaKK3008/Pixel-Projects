@@ -1,0 +1,131 @@
+body {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: #fff;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    background-color: #f3f4f6;
+    border: 3px solid #3498db;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #0d47a1;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formgroup {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+label {
+    font-weight: bold;
+    color: #0d47a1;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    background-color: #e3f2fd;
+    color: #333;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+input:focus, 
+textarea:focus {
+    border: 2px solid #ff5722;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+}
+
+button {
+    background-color: #ff6b00;
+    color: #fff;
+    padding: 10px 0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+#d{
+    /* z-index:2; */
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+}
+#closeDialog{
+    position: absolute;
+    top:0px;
+    right: 0px;
+}
+.invite {
+    display: none;
+    background-color: #ffffff;
+    color: #333;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-left: 5px solid #4CAF50; /* Green accent for a modern touch */
+}
+
+.head h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+    color: #4CAF50; /* Highlighted heading */
+}
+
+.head h3, #event-name {
+    margin: 0;
+    color: #555;
+}
+
+.details {
+    margin-top: 1rem;
+    padding: 0.8rem 0;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.details div {
+    margin: 0.3rem 0;
+    font-weight: 500;
+}
+
+.desc {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}

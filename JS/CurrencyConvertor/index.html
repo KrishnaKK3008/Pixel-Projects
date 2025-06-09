@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Currency Converter</h1>
+
+        <div id="amount">
+            <label for="inputAmount">Enter amount</label>
+            <input type="number" id="inputAmount" placeholder="100" required>
+        </div>
+
+        <div id="list">
+            <select id="from">
+                <option value="USD">🇺🇸 USD United States Dollar</option>
+                <!-- Add more if needed -->
+            </select>
+            <span>TO</span>
+            <select id="to">
+                <option value="INR">🇮🇳 IND Indian Rupee</option>
+                <!-- Add more if needed -->
+            </select>
+        </div>
+
+        <div id="con">
+            <button id="convert">Convert</button>
+        </div>
+
+        <p><span id="result">100 USD = 8,350.24 INR</span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

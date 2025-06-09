@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>To-Do List</h1>
+            <input type="text" id="searchTask" placeholder="Search tasks...">
+        </div>
+
+        <div class="input-section">
+            <div class="error-message" id="errorMessage">
+                <span id="errorMessageText"></span>
+                <button id="closeError">×</button>
+            </div>
+            <input type="text" id="taskInput" placeholder="Add your to-do task...">
+            <input type="date" id="dateInput">
+            <input type="time" id="timeInput">
+            <button id="addTaskBtn">Add Task</button>
+        </div>
+
+        <div class="tasks-section">
+            <h2>Today</h2>
+            <div class="today-tasks">
+                </div>
+
+            <h2>Due Tasks</h2>
+            <div class="due-tasks">
+                </div>
+
+            <h2>Upcoming Tasks</h2>
+            <div class="upcoming-tasks">
+                </div>
+
+            <div class="empty-state" id="emptyDue">No due tasks.</div>
+            <div class="empty-state" id="emptyUpcoming">No upcoming tasks.</div>
+            <div class="empty-state" id="emptyToday">No tasks for today.</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

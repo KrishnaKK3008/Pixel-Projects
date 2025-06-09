@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    background-color: tomato;
+    margin: 0;
+    overflow: hidden; /* Prevents accidental overflow */
+}
+
+.container {
+    height: 90vh;            /* Optimized height for perfect fit */
+    width: 90%;              /* Flexible width for responsiveness */
+    max-width: 400px;        /* Ideal for balanced layout */
+    display: flex;
+    flex-direction: column;  
+    justify-content: space-around; /* Balanced spacing */
+    text-align: center;
+    background-color: #ff6347;
+    padding: 15px;           /* Reduced padding to save space */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: #fff;
+    font-size: 2rem;         /* Balanced heading size */
+    margin: 0;               /* Prevents extra space */
+}
+
+#rules {
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;       /* Smaller text for better fit */
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-template-rows: repeat(4, 1fr);    
+    gap: 2px;
+    width: 100%;             
+    aspect-ratio: 1 / 1;     /* Maintains a square layout */
+}
+
+.box {
+    background-color: #fff;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.box:hover {
+    background-color: #ffeeba;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;   
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}

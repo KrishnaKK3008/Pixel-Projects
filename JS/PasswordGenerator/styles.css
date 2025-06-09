@@ -1,0 +1,129 @@
+body {
+  background-image: url("https://ik.imagekit.io/d9mvewbju/BBA-NeetoSite-and-Project-Resources/password-generator-container_tarSlyutN.png?updatedAt=1730755103984");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  height: 90%;
+  width: 80%;
+  padding: 20px;
+}
+
+.heading {
+  text-align: center;
+}
+
+#main-section {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+#display {
+  background-color: #f4f4f4;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+#display input {
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+#copy {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#copy:hover {
+  background-color: #45a049;
+}
+
+.slider-section {
+    display: flex
+;
+    margin-bottom: 20px;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+#lengthValue {
+  font-weight: bold;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.alert {
+  position: fixed;
+  left: 20px;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  z-index: 999;
+  display: none;
+  text-align: center;
+  min-width: 250px;
+}
+
+.clipboard-alert {
+  bottom: 70px;
+  background-color: #4caf50;
+}
+
+.options-alert {
+  bottom: 20px;
+  background-color: #e74c3c;
+}
+
+#info {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#first-information-section,
+#second-information-section {
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}

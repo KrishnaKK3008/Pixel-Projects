@@ -1,0 +1,77 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e0f2f7; /* Light blue-gray background */
+    font-family: sans-serif;
+}
+
+.calculator {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+}
+
+#display {
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
+    padding: 15px;
+    font-size: 24px;
+    text-align: right;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+}
+
+button {
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+.operator {
+    background-color: #fdd835; /* Yellow-ish for operators */
+    color: #fff;
+}
+
+.operator:hover {
+    background-color: #fbc02d;
+}
+
+.clear, .delete, .exponent {
+    background-color: #e57373; /* Light red for clear, delete, exp */
+    color: #fff;
+}
+
+.clear:hover, .delete:hover, .exponent:hover {
+    background-color: #ef5350;
+}
+
+.equal {
+    grid-column: span 1; /* Adjust if needed based on layout */
+    background-color: #4caf50; /* Green for equals */
+    color: #fff;
+}
+
+.equal:hover {
+    background-color: #43a047;
+}

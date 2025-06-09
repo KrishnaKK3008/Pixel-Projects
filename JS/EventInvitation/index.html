@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Event Invite</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Create An Event Invite</h1>
+        <form action="">
+            <div class="formgroup">
+                <label for="eventName">Event Name</label>
+                <input type="text" id="eventName" placeholder="Enter Event Name">
+            </div>
+
+            <div class="formgroup">
+                <label for="eventDate">Event Date</label>
+                <input type="date" id="eventDate" placeholder="dd/mm/yyyy">
+            </div>
+
+            <div class="formgroup">
+                <label for="startTime">Start Time</label>
+                <input type="time" id="startTime">
+            </div>
+
+            <div class="formgroup">
+                <label for="endTime">End Time</label>
+                <input type="time" id="endTime">
+            </div>
+
+            <div class="formgroup">
+                <label for="eventDescription">Event Description</label>
+                <textarea id="eventDescription" rows="4" cols="10"></textarea>
+            </div>
+
+            <div class="formgroup">
+                <label for="location">Location</label>
+                <input type="text" id="location">
+            </div>
+
+            <div class="formgroup">
+                <button type="submit">Create Description</button>
+            </div>
+        </form>
+    </div> 
+    <div class="invite">
+        <div class="head">
+            <h1 class="inv">YOU ARE INVITED</h1>
+            <h3 class="inv">TO THE</h3>
+            <h2 id="event-name">KERALA JS MEETUP</h3>
+        </div>
+        <div class="details">
+            <div class="date">Saturday, December 9,2024</div>
+            <div class="time">10:00 AM</div>
+            <div class="place">Kochi, Kerala</div>
+        </div>
+        <div class="desc">
+            A JavaScript Meetup is an event where developers, from beginners to experts, gather to discuss JavaScript concepts, frameworks, and best practices. 
+        </div>
+    </div>
+    <dialog>
+        <p>Please fill in all the fields</p>
+        <button id="closeDialog">Close</button>
+    </dialog>
+    <script src="script.js"></script>
+</body>
+</html>

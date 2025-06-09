@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="heading">Password Generator</h2>
+
+      <div id="main-section">
+        <div id="display">
+          <input type="text" value="ExamplePass123!" id="dis" disabled />
+          <button id="copy">Copy Password</button>
+        </div>
+        <div id="clipboard-alert" class="alert clipboard-alert">Password copied to clipboard!</div>
+        <div id="options-alert" class="alert options-alert">Please select at least one checkbox to generate a password.</div>
+
+        <!-- Slider Section -->
+        <div class="slider-section">
+          <label for="lengthSlider">Use the slider and select options to lengthen your password (6-24).</label>
+          <div class="slider-group">
+            <input
+              type="range"
+              id="lengthSlider"
+              min="6"
+              max="24"
+              value="9"
+            />
+            <span><strong id="lengthValue">9</strong> Total Characters</span>
+          </div>
+        </div>
+
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" name="includeNumbers" />
+            Include Numbers
+          </label>
+          <label>
+            <input type="checkbox" name="includeLetters" />
+            Include Letters
+          </label>
+          <label>
+            <input type="checkbox" name="includeMixedCase" />
+            Include Mixed Case
+          </label>
+          <label>
+            <input type="checkbox" name="includePunctuation" />
+            Include Punctuation
+          </label>
+        </div>
+      </div>
+
+      <!-- Informational Section -->
+      <div id="info">
+        <div id="first-information-section">
+          <h3>Do you use any of these weak passwords?</h3>
+          <ul>
+            <li>Password</li>
+            <li>123456</li>
+            <li>Qwerty</li>
+            <li>Your name</li>
+          </ul>
+        </div>
+        <div id="second-information-section">
+          <h3>Why are those passwords weak?</h3>
+          <ul>
+            <li>They're easy to guess or crack.</li>
+            <li>If one of your logins is compromised, a hacker can access all your services.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

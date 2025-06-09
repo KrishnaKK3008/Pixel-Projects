@@ -1,0 +1,110 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+}
+
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Search Bar Styling */
+#search {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#search img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+#searchbar {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+/* Category Section */
+#info h2 {
+  margin-bottom: 10px;
+}
+
+#category {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+#category div {
+  background-color: #e0e0e0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* News Container with Scroll */
+#news-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* News Box Style */
+.news-grid {
+  background-color: #ffffff;
+  padding: 20px;
+  height: 300px;
+  overflow-y: auto;
+  border-radius: 12px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.news-grid h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.news-grid p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+/* First box spans 2 columns */
+.wide {
+  grid-column: span 2;
+  background-color: #f0f8ff;
+}
+
+/* Show More Button */
+#showMoreBtn {
+  display: block;
+  margin: 30px auto;
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  background-color: blue;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+}
+/* Highlight selected categories */
+#category div.selected {
+  background-color: black;
+  color: white;
+}

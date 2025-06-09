@@ -1,0 +1,56 @@
+.product-container {
+  display: flex;
+  padding: 20px;
+  background: white;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-images {
+  height: 250px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.product-images img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product-details {
+  width: 60%;
+  padding-left: 20px;
+}
+
+.size-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.size-options button {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.add-to-bag {
+  background: red;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.favorite {
+  background: #ddd;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
